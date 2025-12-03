@@ -30,7 +30,10 @@ public class Lab3CRC {
     // Encode data with CRC remainder
     public static String encode(String data, String key, boolean isBinary) {
         String binaryData = isBinary ? data : toBinary(data);
+
+        // 16 zeros appended for CRC calculation (since CRC-CCITT is 16-bit)
         String appended = binaryData + new String(new char[16]).replace('\0', '0');
+
         String remainder = divide(appended, key);
         System.out.println("CRC Remainder (16 bits): " + remainder);
         return binaryData + remainder;
