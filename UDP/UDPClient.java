@@ -1,30 +1,62 @@
 package UDP;
 
-import java.io.*;
 import java.net.*;
+import java.util.*;
 
 class UDPClient {
     public static void main(String[] args) throws Exception {
-        BufferedReader inFormUser = new BufferedReader(new InputStreamReader(System.in));
+
+        Scanner sc = new Scanner(System.in);
         DatagramSocket clientSocket = new DatagramSocket();
-        InetAddress IPAddress = InetAddress.getByName("localhost");
 
-        byte[] sendData = new byte[1024];
-        byte[] receiveData = new byte[1024];
+        InetAddress serverAddress = InetAddress.getByName("localhost");
 
-        System.out.println("Enter the string in lowercase so that you receive the message in Uppercase from the server");
-        String sentence = inFormUser.readLine();
+        while (true) {
+            System.out.println(
+                "Enter the string in lowercase (type 'exit' to quit):"
+            );
 
-        sendData = sentence.getBytes();
-        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 5454);
-        clientSocket.send(sendPacket);
+            String sentence = sc.nextLine();
 
-        DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-        clientSocket.receive(receivePacket);
+            byte[] sendData = sentence.getBytes();
 
-        String modifiedSentence = new String(receivePacket.getData());
-        System.out.println("FROM SERVER: " + modifiedSentence);
+            DatagramPacket sendPacket =
+                    new DatagramPacket(sendData, sendData.length,
+                            serverAddress, 5454);
+            clientSocket.send(sendPacket);
+
+            if (sentence.equalsIgnoreCase("exit")) {
+                break;
+            }
+
+            byte[] receiveData = new byte[1024];
+            DatagramPacket receivePacket =
+                    new DatagramPacket(receiveData, receiveData.length);
+            clientSocket.receive(receivePacket);
+
+            String modifiedSentence = new String(
+                    receivePacket.getData(),
+                    0,
+                    receivePacket.getLength()
+            );
+
+            System.out.println("FROM SERVER: " + modifiedSentence);
+        }
 
         clientSocket.close();
+        sc.close();
     }
 }
+
+/*
+Server is Ready for the client
+RECEIVED: computer science
+RECEIVED: exit
+Server shutting down...
+
+Enter the string in lowercase (type 'exit' to quit):
+computer science
+FROM SERVER: COMPUTER SCIENCE
+Enter the string in lowercase (type 'exit' to quit):
+exit
+ */

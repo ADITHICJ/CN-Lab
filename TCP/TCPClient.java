@@ -35,3 +35,17 @@ public class TCPClient {
         sock.close();
     }
 }
+
+/*
+d:\CN lab>java TCP.TCPServer
+Server ready for connection...
+Client connected. Waiting for filename...
+File transfer complete. Closing connection.
+
+D:\CN lab>java TCP.TCPClient 
+Connected to server.
+Enter the filename: sample.txt
+
+--- File Content ---
+This is sample text.
+*/

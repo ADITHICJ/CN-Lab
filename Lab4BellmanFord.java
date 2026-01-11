@@ -68,3 +68,18 @@ public class Lab4BellmanFord {
                 }
         }
 }
+/*
+Enter the number of vertices: 4
+Enter the weight matrix of the graph (use 0 for no edge):
+0 4 0 0
+0 0 -2 0
+0 0 0 3
+0 0 0 0
+Enter the source vertex (1-based index): 1 
+
+Vertex   Distance from Source
+1                0
+2                4
+3                2
+4                5
+*/

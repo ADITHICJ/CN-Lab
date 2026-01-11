@@ -76,3 +76,17 @@ public class Lab3CRC {
         sc.close();
     }
 }
+
+/*
+=== CRC-CCITT (16-bit) Error Detection ===
+Enter 17-bit polynomial key (e.g., 10001000000100001): 10001000000100001
+
+Select Input Type:
+1. Text / Number
+2. Binary
+1
+Enter data: Hello
+CRC Remainder (16 bits): 1100101111010110
+
+Encoded Data (with CRC): 01001000011001010110110001101100011011111100101111010110
+*/

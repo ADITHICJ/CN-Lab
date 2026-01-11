@@ -72,3 +72,26 @@ class Lab2Sort {
         sc.close();
     }
 }
+/*
+Enter the number of frames: 
+4
+Enter the frame details:
+
+Enter frame number: 2
+Enter frame content: 1
+
+Enter frame number: 4
+Enter frame content: 2
+
+Enter frame number: 1
+Enter frame content: 9
+
+Enter frame number: 3
+Enter frame content: 6
+
+Before Sorting (Shuffled frames):
+2 6 9 1
+
+After Sorting the frames:
+9 1 6 2
+*/

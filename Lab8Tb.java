@@ -53,3 +53,16 @@ public class Lab8Tb {
         sc.close();
     }
 }
+/*
+Enter bucket capacity: 10
+Enter token generation rate: 3
+Enter number of packets: 4
+Enter packet sizes:
+5 6 3 2
+
+Packet  Before  AfterAdd        Sent    Left    Status
+5               0               3               0               3       Dropped
+6               3               6               6               0       Accepted
+3               0               3               3               0       Accepted
+2               0               3               2               1       Accepted
+*/
